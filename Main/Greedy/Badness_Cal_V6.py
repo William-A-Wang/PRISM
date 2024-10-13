@@ -41,7 +41,7 @@ def calculate_badness(p1, p2):
 
     return badness
 
-primers = load_primers("D:\\CISEProgram\\USDA\Greedy\\E_output2.txt")
+primers = load_primers("D:\\CISEProgram\\USDA\Greedy\\E_output.txt")
 n = len(primers)
 badness_matrix = np.zeros((n, n))
 
