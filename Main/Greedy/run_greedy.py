@@ -1,23 +1,25 @@
 import subprocess
+import os
 
 def run_programs():
-  
-    subprocess.run(["python3", "Extract_V3.py"])
+    python_venv = "D:\\CISEProgram\\USDA\\.venv\\Scripts\\python.exe"  
+
+    subprocess.run([python_venv, "D:\\CISEProgram\\USDA\\Greedy\\Extract3.py"], check=True)
     print("Program 1 finished, E-output.txt generated.")
 
-    subprocess.run(["python3", "Badness_Cal_V6.py"])
+    if not os.path.exists("D:\\CISEProgram\\USDA\\Greedy\\E_output.txt"):
+        print("Error: E_output.txt not found!")
+        return
+
+    subprocess.run([python_venv, "D:\\CISEProgram\\USDA\\Greedy\\V5.py"], check=True)
     print("Program 2 finished, badness_matrix.csv generated.")
 
-    subprocess.run(["python3", "Greedy_V5.py"])
-    print("Program 3 finished, final processing done.")
+    if not os.path.exists("D:\\CISEProgram\\USDA\\Greedy\\badness_matrix.csv"):
+        print("Error: badness_matrix.csv not found!")
+        return
 
-    try:
-        with open("optimized_primers.txt", "r") as file:
-            content = file.read()
-            print("Content of optimized_primers.txt:")
-            print(content)
-    except FileNotFoundError:
-        print("Error: optimized_primers.txt not found.")
+    subprocess.run([python_venv, "D:\\CISEProgram\\USDA\\Greedy\\GV5.py"], check=True)
+    print("Program 3 finished, final processing done.")
 
 if __name__ == "__main__":
     run_programs()
