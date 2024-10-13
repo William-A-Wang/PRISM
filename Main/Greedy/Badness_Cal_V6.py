@@ -16,7 +16,7 @@ def reverse_complement(seq):
     complement = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
     return ''.join(complement[base] for base in reversed(seq))
 
-# Badness计算函数
+# Badness
 def calculate_badness(p1, p2):
     min_len = 4  # min4
     badness = 0
