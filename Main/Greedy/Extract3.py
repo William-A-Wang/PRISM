@@ -27,7 +27,7 @@ def save_primers_to_file(primers, output_file):
 
 #save
 input_file_path = "D:\\CISEProgram\\USDA\\USDA_Project\\primer3_output.txt"  
-output_file_path = "D:\\CISEProgram\\USDA\Greedy\\E_output3.txt"  
+output_file_path = "D:\\CISEProgram\\USDA\Greedy\\E_output.txt"  
 
 primers = extract_primers(input_file_path)
 save_primers_to_file(primers, output_file_path)
