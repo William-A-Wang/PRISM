@@ -1,10 +1,10 @@
 import pandas as pd
 #1:
-badness_matrix_file = 'D:\\CISEProgram\\USDA\\Greedy\\badness_matrix2.csv'
+badness_matrix_file = 'D:\\CISEProgram\\USDA\\Greedy\\badness_matrix.csv'
 badness_matrix = pd.read_csv(badness_matrix_file, index_col=0)
 
 #2: 
-primer_file_path = 'D:\\CISEProgram\\USDA\\Greedy\\E_output3.txt'
+primer_file_path = 'D:\\CISEProgram\\USDA\\Greedy\\E_output.txt'
 primer_sequences = {}
 
 
