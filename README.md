@@ -1,7 +1,11 @@
 # PRISM - Primer Design through Submodular Function Estimation
 
 ## User Guide  
-PRISM is a **multiplex‑PCR primer design framework** that formulates primer selection as a constrained submodular‑maximization problem, jointly optimizing genome coverage while reducing primer‑dimerization risk. It employs a provably bounded local‑search algorithm to output primer sets with high coverage and low dimer risk.
+**PRISM** (PRImer Selection through Submodular Maximization) is an open-source software tool for automated design of multiplex PCR primers, developed to support viral genome sequencing, pathogen surveillance, and other high-throughput molecular biology applications. Released under the **GNU General Public License (GPL)**, PRISM is freely available and encourages community use, extension, and collaboration.
+
+PRISM introduces a principled optimization framework that formulates the primer design task as a **constrained submodular maximization problem**, balancing two competing objectives: maximizing genome coverage and minimizing undesired primer-primer interactions, quantified using the **Badness value**. This formulation allows PRISM to leverage a fast local search algorithm with a **provable constant-factor approximation guarantee**, making it the first primer design method to combine rigorous theoretical guarantees with practical scalability.
+
+In extensive evaluations on viral genome datasets such as foot-and-mouth disease virus (FMDV) and Zika virus, PRISM consistently outperforms leading tools—including **PrimalScheme**, **Olivar**, and **primerJinn**—achieving significantly lower Badness values, tighter distributions of primer quality, and robust genome coverage with low memory usage and runtime.
 
 <p align="center">
   <img src="https://img.shields.io/pypi/v/prism-bio.svg?color=blue" alt="PyPI">
@@ -51,7 +55,7 @@ prism --version
 
 ## General usage
 ### Input files
-The input sequence must be provided in reference FASTA format.
+PRISM requires a **reference genome in FASTA format** as input. This file should contain one or more nucleotide sequences in standard FASTA format. For optimal results in multiplex primer design, the input should represent a high-quality reference or consensus sequence derived from your target population or viral strain.
 
 ---
 
@@ -82,9 +86,12 @@ prism -h
 # Run PRISM on a Zika reference, 300 bp windows, export CSV
 prism \
   -i data/NC_012532.1.fna \
-  -w 300 \
+  -w 250 \
   -o output/optimized_primers.csv
 ```
+
+You can find this example file `NC_012532.1.fna` in `example input`. This is the Zika virus sequence from the [NCBI dataset](https://www.ncbi.nlm.nih.gov/nuccore/NC_012532.1?report=fasta).
+
 
 ---
 
@@ -115,6 +122,14 @@ Using this approach, you can deploy code locally while performing development-re
 
 ---
 
+## External resources
+
+We used Olivar's badness calculation function in our code, but modified some of the parameters.
+
+* [Olivar](https://github.com/treangenlab/Olivar)
+
+---
+
 ## License
 
 PRISM is released under the **GNU GPL v3.0**.  
@@ -124,8 +139,18 @@ See the [LICENSE](LICENSE) file for details.
 ---
 
 ## Citing PRISM
-If you use PRISM, please cite:
-> Wang A. *et al.* Primer Design through Submodular Function
-Estimation. (*Being submitted,coming soon...*)
+If you use PRISM in an academic setting, please cite:
+
+    @misc{WangPRISM25,
+    author      = { Ao Wang and 
+                    Yixin Chen and
+                    Aaron Hong and
+                    Adam Rivers and
+                    Alan Kuhnle and
+                    Christina Boucher},
+    title       = {Primer Design through Submodular Function Estimation},
+    note        = {In submission}
+    year        = {2025},
+    }
 
 
