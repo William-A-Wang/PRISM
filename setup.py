@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="prism",
+    name="prism-bio",
     version="1.0.1",
     description="PCR primer design & optimization pipeline",
     author="Ao Wang",
