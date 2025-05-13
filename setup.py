@@ -1,16 +1,33 @@
-# setup.py
 from setuptools import setup, find_packages
+from pathlib import Path
+
+this_dir = Path(__file__).parent
+long_desc = (this_dir / "README.md").read_text(encoding="utf‑8")
 
 setup(
     name="prism-bio",
-    version="1.0.1",
+    version="1.0.2",                    
     description="PCR primer design & optimization pipeline",
+    long_description=long_desc,
+    long_description_content_type="text/markdown",
     author="Ao Wang",
     author_email="wang.ao@ufl.edu",
     url="https://github.com/William-A-Wang/PRISM",
     license="GPL-3.0",
-    packages=find_packages(where="Main"),     
-    package_dir={"": "Main"},                  
+
+    
+    package_dir={"": "Main"},
+    packages=find_packages(where="Main"),  
+    
+    py_modules=[
+        "main",              
+        "badness_utils",
+        "data_io",
+        "design_primers",
+        "iterative",
+        "optimization",
+    ],
+
     install_requires=[
         "primer3-py",
         "numpy",
@@ -21,7 +38,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "prism=main:main",  
+            "prism=main:main",
         ],
     },
     classifiers=[
