@@ -1,15 +1,16 @@
 import argparse
 from tqdm import tqdm
 import pandas as pd
-
 from data_io import read_consensus_sequence, sliding_window_regions
-from design_primers import design_primers, PrimerSetBadnessFast
+from design_primers import design_primers
 from iterative import convert_primer_results_to_regions, iterative_primer_optimization
 from badness_utils import compute_badness, process_badness_mapping
 from optimization import generate_initial_solution_numba, approximation_algorithm
 import warnings
 
 warnings.filterwarnings("ignore", message="Function deprecated please use")
+
+__version__ = "1.0.0"
 
 def parse_args():
     """
@@ -18,7 +19,14 @@ def parse_args():
       -w / --window-size Window size for slicing (default: 250)
       -o / --output-csv  Path to save the optimized primers CSV
     """
-    parser = argparse.ArgumentParser(description="Run the primer optimization pipeline")
+    parser = argparse.ArgumentParser(description="Run the primer optimization")
+
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}"
+    )
+
     parser.add_argument(
         "-i", "--input", required=True,
         help="Path to the input FASTA file, e.g. D:\\data\\seq.fna"
