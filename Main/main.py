@@ -10,7 +10,7 @@ import warnings
 
 warnings.filterwarnings("ignore", message="Function deprecated please use")
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 def parse_args():
     """
