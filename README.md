@@ -67,8 +67,8 @@ PRISM accepts three main sub-commands, `input` (required), `windows` (optional, 
 | Flag | Default | Description |
 |------|---------|-------------|
 | `-i`, `--input` | **required** | Input FASTA/FA file |
-| `-w`, `--window-size` | 250bp | Window size for region slicing |
-| `-e`, `--extend-block-size` | 100bp | block extension size during optimisation |
+| `-w`, `--window-size` | 250 bp | Window size for region slicing |
+| `-e`, `--extend-block-size` | 100 bp | block extension size during optimisation |
 | `-o`, `--output-csv` | `optimized_primers.csv` | Output file (CSV) |
 
 Full help:
