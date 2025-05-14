@@ -10,15 +10,15 @@ import warnings
 
 warnings.filterwarnings("ignore", message="Function deprecated please use")
 
-__version__ = "1.0.4"
+__version__ = "1.0.5"
 
 def parse_args():
     """
     Parse command-line arguments:
-      -i / --input       Path to the input FASTA file
-      -w / --window-size Window size for slicing (default: 250)
-      -e / --extend-size   block extension size during optimisation (default: 100)
-      -o / --output-csv  Path to save the optimized primers CSV
+      -i / --input         Path to the input FASTA file
+      -b / --block-size    Block size for slicing (default: 250)
+      -e / --extend-size   Block extension size during optimisation (default: 100)
+      -o / --output-csv    Path to save the optimized primers CSV
     """
     parser = argparse.ArgumentParser(description="Run the primer optimization")
 
@@ -33,11 +33,11 @@ def parse_args():
         help="Path to the input FASTA file, e.g. D:\\data\\seq.fna"
     )
     parser.add_argument(
-        "-w", "--window-size", type=int, default=250,
-        help="Window size for region slicing (default: 250)"
+        "-b", "--block-size", type=int, default=250,
+        help="Block size for region slicing (default: 250)"
     )
     parser.add_argument(
-        "-e", "--extend-size", type=int, default=100,      # ← 新增
+        "-e", "--extend-size", type=int, default=100,      
         help="Block extension size during optimisation (default: 100)"
     )
     parser.add_argument(
@@ -67,7 +67,7 @@ def main():
     pbar.update(1)
 
     # Step 2: Generate overlapping regions
-    regions = sliding_window_regions(sequence, [args.window_size], overlaps=0)
+    regions = sliding_window_regions(sequence, [args.block_size], overlaps=0)
     pbar.set_description(steps[1])
     pbar.update(1)
 
