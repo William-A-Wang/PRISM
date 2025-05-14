@@ -60,15 +60,15 @@ PRISM requires a **reference genome in FASTA format** as input. This file should
 ---
 
 ### Command-line interface
-PRISM accepts three main sub-commands, `input` (required), `windows` (optional, with a default size of 250 bp), `extend` (optional, with a default size of 100 bp) and `output` (optional, specifies file name and output path):
+PRISM accepts three main sub-commands, `input` (required), `block` (optional, with a default size of 250 bp), `extend` (optional, with a default size of 100 bp) and `output` (optional, specifies file name and output path):
 
 ### CLI options
 
 | Flag | Default | Description |
 |------|---------|-------------|
 | `-i`, `--input` | **required** | Input FASTA/FA file |
-| `-w`, `--window-size` | 250 bp | Window size for region slicing |
-| `-e`, `--extend-block-size` | 100 bp | block extension size during optimisation |
+| `-b`, `--block-size` | 250 bp | Block size for region slicing |
+| `-e`, `--extend-block-size` | 100 bp | Block extension size during optimisation |
 | `-o`, `--output-csv` | `optimized_primers.csv` | Output file (CSV) |
 
 Full help:
@@ -84,10 +84,10 @@ prism -h
 ### Example usage
 
 ```bash
-# Run PRISM on a Zika reference, 300 bp windows, 100 bp extend size, export CSV
+# Run PRISM on a Zika reference, 300 bp blocks, 100 bp block extend size, export CSV
 prism \
   -i data/NC_012532.1.fna \
-  -w 250 \
+  -b 250 \
   -e 100 \
   -o output/optimized_primers.csv
 ```
