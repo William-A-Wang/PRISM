@@ -128,6 +128,8 @@ We used Olivar's badness calculation function in our code, but modified some of 
 
 * [Olivar](https://github.com/treangenlab/Olivar)
 
+We also used primer3 as the initial primer generation.
+* [Primer3](https://pypi.org/project/primer3-py/)
 ---
 
 ## License
