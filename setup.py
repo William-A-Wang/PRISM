@@ -6,7 +6,7 @@ long_desc = (this_dir / "README.md").read_text(encoding="utf‑8")
 
 setup(
     name="prism-bio",
-    version="1.0.2",                    
+    version="1.0.4",                    
     description="PCR primer design & optimization pipeline",
     long_description=long_desc,
     long_description_content_type="text/markdown",

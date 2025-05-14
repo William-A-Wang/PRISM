@@ -10,13 +10,14 @@ import warnings
 
 warnings.filterwarnings("ignore", message="Function deprecated please use")
 
-__version__ = "1.0.3"
+__version__ = "1.0.4"
 
 def parse_args():
     """
     Parse command-line arguments:
       -i / --input       Path to the input FASTA file
       -w / --window-size Window size for slicing (default: 250)
+      -e / --extend-size   block extension size during optimisation (default: 100)
       -o / --output-csv  Path to save the optimized primers CSV
     """
     parser = argparse.ArgumentParser(description="Run the primer optimization")
@@ -34,6 +35,10 @@ def parse_args():
     parser.add_argument(
         "-w", "--window-size", type=int, default=250,
         help="Window size for region slicing (default: 250)"
+    )
+    parser.add_argument(
+        "-e", "--extend-size", type=int, default=100,      # ← 新增
+        help="Block extension size during optimisation (default: 100)"
     )
     parser.add_argument(
         "-o", "--output-csv", default="optimized_primers.csv",
@@ -77,7 +82,7 @@ def main():
         sequence,
         regions,
         max_iterations=50,
-        extend_size=100,
+        extend_size=args.extend_size,
         k=2.0
     )
     pbar.set_description(steps[3])
